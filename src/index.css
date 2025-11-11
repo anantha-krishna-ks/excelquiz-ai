@@ -40,6 +40,7 @@ All colors MUST be HSL.
 
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
+    --warning-light: 38 92% 95%;
 
     --border: 210 25% 90%;
     --input: 210 25% 96%;
