@@ -303,54 +303,61 @@ const Report = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Total Participants */}
-            <div className="p-5 rounded-lg border border-border bg-muted/30 hover:border-primary/30 transition-colors">
-              <div className="flex items-start justify-between mb-3">
+            <div className="p-5 rounded-lg border border-border bg-muted/30 hover:border-primary/30 transition-colors flex flex-col">
+              <div className="flex items-start justify-between mb-auto">
                 <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                   Total Participants
                 </span>
-                <Users className="h-5 w-5 text-muted-foreground" />
+                <div className="h-8 w-8 rounded-full bg-muted/50 flex items-center justify-center">
+                  <Users className="h-4 w-4 text-muted-foreground" />
+                </div>
               </div>
-              <p className="text-3xl font-bold text-foreground mb-1">500</p>
-              <p className="text-xs text-muted-foreground">Across all sessions</p>
+              <p className="text-3xl font-bold text-foreground mt-4">500</p>
             </div>
 
             {/* Selected Demography */}
-            <div className="p-5 rounded-lg border border-border bg-muted/30 hover:border-primary/30 transition-colors">
-              <div className="flex items-start justify-between mb-3">
+            <div className="p-5 rounded-lg border border-border bg-muted/30 hover:border-primary/30 transition-colors flex flex-col">
+              <div className="flex items-start justify-between mb-auto">
                 <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                   Selected Demography
                 </span>
-                <MapPin className="h-5 w-5 text-primary" />
+                <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
+                  <MapPin className="h-4 w-4 text-primary" />
+                </div>
               </div>
-              <p className="text-3xl font-bold text-foreground mb-1">125</p>
-              <Button variant="link" className="p-0 h-auto text-xs text-primary gap-1">
-                View Participant Details
-                <ExternalLink className="h-3 w-3" />
-              </Button>
+              <div className="flex items-end justify-between mt-4">
+                <p className="text-3xl font-bold text-foreground">125</p>
+                <Button variant="link" className="p-0 h-auto text-xs text-primary gap-1">
+                  View Details
+                  <ExternalLink className="h-3 w-3" />
+                </Button>
+              </div>
             </div>
 
             {/* Certified Officials */}
-            <div className="p-5 rounded-lg border border-border bg-muted/30 hover:border-success/30 transition-colors">
-              <div className="flex items-start justify-between mb-3">
+            <div className="p-5 rounded-lg border border-border bg-muted/30 hover:border-success/30 transition-colors flex flex-col">
+              <div className="flex items-start justify-between mb-auto">
                 <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                   Certified Officials
                 </span>
-                <UserCheck className="h-5 w-5 text-success" />
+                <div className="h-8 w-8 rounded-full bg-success/10 flex items-center justify-center">
+                  <UserCheck className="h-4 w-4 text-success" />
+                </div>
               </div>
-              <p className="text-3xl font-bold text-foreground mb-1">20</p>
-              <p className="text-xs text-muted-foreground">4% of total</p>
+              <p className="text-3xl font-bold text-foreground mt-4">20</p>
             </div>
 
             {/* Non-Certified Officials */}
-            <div className="p-5 rounded-lg border border-border bg-muted/30 hover:border-warning/30 transition-colors">
-              <div className="flex items-start justify-between mb-3">
+            <div className="p-5 rounded-lg border border-border bg-muted/30 hover:border-warning/30 transition-colors flex flex-col">
+              <div className="flex items-start justify-between mb-auto">
                 <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                   Non-Certified Officials
                 </span>
-                <UserX className="h-5 w-5 text-warning" />
+                <div className="h-8 w-8 rounded-full bg-warning/10 flex items-center justify-center">
+                  <UserX className="h-4 w-4 text-warning" />
+                </div>
               </div>
-              <p className="text-3xl font-bold text-foreground mb-1">80</p>
-              <p className="text-xs text-muted-foreground">16% of total</p>
+              <p className="text-3xl font-bold text-foreground mt-4">80</p>
             </div>
           </div>
         </section>
