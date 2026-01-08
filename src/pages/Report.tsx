@@ -82,193 +82,217 @@ const Report = () => {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         {/* Filters Section */}
-        <section className="bg-background rounded-xl border border-border p-6 shadow-sm">
-          <h2 className="text-base font-semibold text-foreground mb-5">Filters</h2>
-          
-          {/* Primary Filters */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-            <div className="space-y-2">
-              <Label className="text-sm text-muted-foreground">
-                Start Date <span className="text-destructive">*</span>
-              </Label>
-              <div className="relative">
-                <Input 
-                  type="date" 
-                  defaultValue="2026-01-06"
-                  className="h-10 pr-10"
-                />
+        <section className="bg-background rounded-xl border border-border shadow-sm overflow-hidden">
+          {/* Section Header */}
+          <div className="px-6 py-4 border-b border-border bg-muted/30">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Search className="h-4 w-4 text-primary" />
+                </div>
+                <div>
+                  <h2 className="text-base font-semibold text-foreground">Filters</h2>
+                  <p className="text-xs text-muted-foreground">Refine your report data</p>
+                </div>
               </div>
-            </div>
-            
-            <div className="space-y-2">
-              <Label className="text-sm text-muted-foreground">
-                End Date <span className="text-destructive">*</span>
-              </Label>
-              <Input 
-                type="date" 
-                defaultValue="2026-01-08"
-                className="h-10"
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <Label className="text-sm text-muted-foreground">
-                Webinar Type <span className="text-destructive">*</span>
-              </Label>
-              <Select defaultValue="all">
-                <SelectTrigger className="h-10">
-                  <SelectValue placeholder="Select type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All</SelectItem>
-                  <SelectItem value="live">Live</SelectItem>
-                  <SelectItem value="recorded">Recorded</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            
-            <div className="space-y-2">
-              <Label className="text-sm text-muted-foreground">
-                Program Name <span className="text-destructive">*</span>
-              </Label>
-              <Select defaultValue="program1">
-                <SelectTrigger className="h-10">
-                  <SelectValue placeholder="Select program" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="program1">Program 1</SelectItem>
-                  <SelectItem value="program2">Program 2</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            
-            <div className="space-y-2">
-              <Label className="text-sm text-muted-foreground">
-                Webinar Title <span className="text-destructive">*</span>
-              </Label>
-              <Select defaultValue="fire-safety">
-                <SelectTrigger className="h-10">
-                  <SelectValue placeholder="Select title" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="fire-safety">Fire Safety 2026</SelectItem>
-                  <SelectItem value="workplace">Workplace Safety</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            
-            <div className="space-y-2">
-              <Label className="text-sm text-muted-foreground">
-                Webinar Session <span className="text-destructive">*</span>
-              </Label>
-              <Select defaultValue="session1">
-                <SelectTrigger className="h-10">
-                  <SelectValue placeholder="Select session" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="session1">Fire Safety 2026</SelectItem>
-                  <SelectItem value="session2">Session 2</SelectItem>
-                </SelectContent>
-              </Select>
+              <div className="flex items-center gap-2">
+                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                  Clear All
+                </Button>
+                <Button size="sm" className="gap-2">
+                  <Search className="h-3.5 w-3.5" />
+                  Apply
+                </Button>
+              </div>
             </div>
           </div>
 
-          {/* Demographics Filter */}
-          <div className="pt-4 border-t border-border">
-            <h3 className="text-sm font-medium text-foreground mb-3">Demographics Filter</h3>
-            <p className="text-sm text-muted-foreground mb-4">Participant's Information</p>
-            
-            {/* Tab Switcher */}
-            <div className="inline-flex rounded-lg border border-border p-1 bg-muted/50 mb-5">
-              <button
-                onClick={() => setFilterTab("location")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                  filterTab === "location"
-                    ? "bg-background text-foreground shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <MapPin className="h-4 w-4" />
-                By Location
-              </button>
-              <button
-                onClick={() => setFilterTab("organization")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                  filterTab === "organization"
-                    ? "bg-background text-foreground shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <Building2 className="h-4 w-4" />
-                By Organization
-              </button>
+          <div className="p-6 space-y-6">
+            {/* Date & Type Row */}
+            <div className="space-y-3">
+              <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Date Range & Type</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="space-y-1.5">
+                  <Label className="text-sm font-medium text-foreground">
+                    Start Date <span className="text-destructive">*</span>
+                  </Label>
+                  <Input 
+                    type="date" 
+                    defaultValue="2026-01-06"
+                    className="h-10 bg-muted/30 border-border focus:bg-background transition-colors"
+                  />
+                </div>
+                
+                <div className="space-y-1.5">
+                  <Label className="text-sm font-medium text-foreground">
+                    End Date <span className="text-destructive">*</span>
+                  </Label>
+                  <Input 
+                    type="date" 
+                    defaultValue="2026-01-08"
+                    className="h-10 bg-muted/30 border-border focus:bg-background transition-colors"
+                  />
+                </div>
+                
+                <div className="space-y-1.5">
+                  <Label className="text-sm font-medium text-foreground">
+                    Webinar Type <span className="text-destructive">*</span>
+                  </Label>
+                  <Select defaultValue="all">
+                    <SelectTrigger className="h-10 bg-muted/30 border-border focus:bg-background transition-colors">
+                      <SelectValue placeholder="Select type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All</SelectItem>
+                      <SelectItem value="live">Live</SelectItem>
+                      <SelectItem value="recorded">Recorded</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
             </div>
 
-            {/* Location Filter Fields */}
-            {filterTab === "location" && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-                <div className="space-y-2">
-                  <Label className="text-sm text-muted-foreground">Select City</Label>
-                  <Select defaultValue="albany">
-                    <SelectTrigger className="h-10">
-                      <SelectValue placeholder="Select city" />
+            {/* Webinar Details Row */}
+            <div className="space-y-3">
+              <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Webinar Details</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="space-y-1.5">
+                  <Label className="text-sm font-medium text-foreground">
+                    Program Name <span className="text-destructive">*</span>
+                  </Label>
+                  <Select defaultValue="program1">
+                    <SelectTrigger className="h-10 bg-muted/30 border-border focus:bg-background transition-colors">
+                      <SelectValue placeholder="Select program" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="albany">Albany</SelectItem>
-                      <SelectItem value="troy">Troy</SelectItem>
-                      <SelectItem value="schenectady">Schenectady</SelectItem>
+                      <SelectItem value="program1">Program 1</SelectItem>
+                      <SelectItem value="program2">Program 2</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="space-y-2">
-                  <Label className="text-sm text-muted-foreground">Zipcode</Label>
-                  <Input 
-                    placeholder="e.g., 12201" 
-                    className="h-10"
-                  />
-                  <p className="text-xs text-muted-foreground">Clear city to enter zipcode</p>
-                </div>
-              </div>
-            )}
-
-            {/* Organization Filter Fields */}
-            {filterTab === "organization" && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-                <div className="space-y-2">
-                  <Label className="text-sm text-muted-foreground">Select Organization</Label>
-                  <Select>
-                    <SelectTrigger className="h-10">
-                      <SelectValue placeholder="Select organization" />
+                
+                <div className="space-y-1.5">
+                  <Label className="text-sm font-medium text-foreground">
+                    Webinar Title <span className="text-destructive">*</span>
+                  </Label>
+                  <Select defaultValue="fire-safety">
+                    <SelectTrigger className="h-10 bg-muted/30 border-border focus:bg-background transition-colors">
+                      <SelectValue placeholder="Select title" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="budget">Division of the Budget</SelectItem>
-                      <SelectItem value="health">Department of Health</SelectItem>
-                      <SelectItem value="services">Office of General Services</SelectItem>
+                      <SelectItem value="fire-safety">Fire Safety 2026</SelectItem>
+                      <SelectItem value="workplace">Workplace Safety</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="space-y-2">
-                  <Label className="text-sm text-muted-foreground">Department</Label>
-                  <Select>
-                    <SelectTrigger className="h-10">
-                      <SelectValue placeholder="Select department" />
+                
+                <div className="space-y-1.5">
+                  <Label className="text-sm font-medium text-foreground">
+                    Webinar Session <span className="text-destructive">*</span>
+                  </Label>
+                  <Select defaultValue="session1">
+                    <SelectTrigger className="h-10 bg-muted/30 border-border focus:bg-background transition-colors">
+                      <SelectValue placeholder="Select session" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="finance">Finance</SelectItem>
-                      <SelectItem value="operations">Operations</SelectItem>
+                      <SelectItem value="session1">Fire Safety 2026</SelectItem>
+                      <SelectItem value="session2">Session 2</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
               </div>
-            )}
+            </div>
 
-            {/* Filter Actions */}
-            <div className="flex items-center gap-3">
-              <Button className="gap-2">
-                <Search className="h-4 w-4" />
-                Apply Filters
-              </Button>
-              <Button variant="outline">Clear All</Button>
+            {/* Demographics Filter */}
+            <div className="space-y-4 pt-4 border-t border-border">
+              <div>
+                <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">Demographics Filter</h3>
+                <p className="text-sm text-muted-foreground">Filter participants by location or organization</p>
+              </div>
+              
+              {/* Modern Tab Switcher */}
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setFilterTab("location")}
+                  className={`flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-medium transition-all border ${
+                    filterTab === "location"
+                      ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                      : "bg-muted/30 text-muted-foreground border-border hover:bg-muted/50 hover:text-foreground"
+                  }`}
+                >
+                  <MapPin className="h-4 w-4" />
+                  By Location
+                </button>
+                <button
+                  onClick={() => setFilterTab("organization")}
+                  className={`flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-medium transition-all border ${
+                    filterTab === "organization"
+                      ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                      : "bg-muted/30 text-muted-foreground border-border hover:bg-muted/50 hover:text-foreground"
+                  }`}
+                >
+                  <Building2 className="h-4 w-4" />
+                  By Organization
+                </button>
+              </div>
+
+              {/* Location Filter Fields */}
+              {filterTab === "location" && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-xl bg-muted/20 border border-border/50 animate-fade-in">
+                  <div className="space-y-1.5">
+                    <Label className="text-sm font-medium text-foreground">Select City</Label>
+                    <Select defaultValue="albany">
+                      <SelectTrigger className="h-10 bg-background border-border">
+                        <SelectValue placeholder="Select city" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="albany">Albany</SelectItem>
+                        <SelectItem value="troy">Troy</SelectItem>
+                        <SelectItem value="schenectady">Schenectady</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label className="text-sm font-medium text-foreground">Zipcode</Label>
+                    <Input 
+                      placeholder="e.g., 12201" 
+                      className="h-10 bg-background border-border"
+                    />
+                    <p className="text-xs text-muted-foreground">Clear city to enter zipcode directly</p>
+                  </div>
+                </div>
+              )}
+
+              {/* Organization Filter Fields */}
+              {filterTab === "organization" && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-xl bg-muted/20 border border-border/50 animate-fade-in">
+                  <div className="space-y-1.5">
+                    <Label className="text-sm font-medium text-foreground">Select Organization</Label>
+                    <Select>
+                      <SelectTrigger className="h-10 bg-background border-border">
+                        <SelectValue placeholder="Select organization" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="budget">Division of the Budget</SelectItem>
+                        <SelectItem value="health">Department of Health</SelectItem>
+                        <SelectItem value="services">Office of General Services</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label className="text-sm font-medium text-foreground">Department</Label>
+                    <Select>
+                      <SelectTrigger className="h-10 bg-background border-border">
+                        <SelectValue placeholder="Select department" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="finance">Finance</SelectItem>
+                        <SelectItem value="operations">Operations</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </section>
