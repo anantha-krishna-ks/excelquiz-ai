@@ -310,7 +310,8 @@ const Report = () => {
                 </span>
                 <Users className="h-5 w-5 text-muted-foreground" />
               </div>
-              <p className="text-3xl font-bold text-foreground">500</p>
+              <p className="text-3xl font-bold text-foreground mb-1">500</p>
+              <p className="text-xs text-muted-foreground">Across all sessions</p>
             </div>
 
             {/* Selected Demography */}
@@ -319,10 +320,12 @@ const Report = () => {
                 <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                   Selected Demography
                 </span>
+                <MapPin className="h-5 w-5 text-primary" />
               </div>
-              <Button variant="link" className="p-0 h-auto text-primary gap-1">
+              <p className="text-3xl font-bold text-foreground mb-1">125</p>
+              <Button variant="link" className="p-0 h-auto text-xs text-primary gap-1">
                 View Participant Details
-                <ExternalLink className="h-3.5 w-3.5" />
+                <ExternalLink className="h-3 w-3" />
               </Button>
             </div>
 
@@ -334,7 +337,8 @@ const Report = () => {
                 </span>
                 <UserCheck className="h-5 w-5 text-success" />
               </div>
-              <p className="text-3xl font-bold text-foreground">20</p>
+              <p className="text-3xl font-bold text-foreground mb-1">20</p>
+              <p className="text-xs text-muted-foreground">4% of total</p>
             </div>
 
             {/* Non-Certified Officials */}
@@ -345,7 +349,8 @@ const Report = () => {
                 </span>
                 <UserX className="h-5 w-5 text-warning" />
               </div>
-              <p className="text-3xl font-bold text-foreground">80</p>
+              <p className="text-3xl font-bold text-foreground mb-1">80</p>
+              <p className="text-xs text-muted-foreground">16% of total</p>
             </div>
           </div>
         </section>
